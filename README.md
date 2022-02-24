@@ -21,8 +21,8 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
                                                 New file access after build
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    =>files // for file storage
-    =>pages/_middleware.js // for rewrite url
+    => Files // for file storage
+    => Pages/_middleware.js // for rewrite url
         import { NextResponse } from 'next/server';
         export function middleware(req) {
             if((req.nextUrl.pathname).includes('/images/')){
@@ -30,7 +30,7 @@
             }
         }
 
-    =>pages/api/images/[...slug].js // for access images
+    => Pages/api/images/[...slug].js // for access images
         export const config = {
             api: { externalResolver: true }
         }
@@ -40,4 +40,4 @@
         handler.use('/images', serveFiles);
         export default handler;
 
-    =>load this url : http://localhost:3000/images/forgot_password.png
+    => Load this url : http://localhost:3000/images/forgot_password.png
