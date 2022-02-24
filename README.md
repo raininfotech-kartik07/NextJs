@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------
-                             Session
+                                    Session
 ----------------------------------------------------------------------------------
     var session = require('express-session');
     var FileStore = require('session-file-store')(session);
@@ -19,7 +19,7 @@
     })
 
 ----------------------------------------------------------------------------------
-                            New file access after build
+                                New file access after build
 ----------------------------------------------------------------------------------
     =>files // for file storage
     =>pages/_middleware.js // for rewrite url
