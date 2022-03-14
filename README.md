@@ -23,21 +23,23 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
     => Files // for file storage
     => Pages/_middleware.js // for rewrite url
-        import { NextResponse } from 'next/server';
-        export function middleware(req) {
-            if((req.nextUrl.pathname).includes('/images/')){
-                return NextResponse.rewrite('/api' + req.nextUrl.pathname);
-            }
+        import { NextResponse } from 'next/server'
+        export function middleware(request) {
+          const url = request.nextUrl.clone()
+          if((request.nextUrl.pathname).includes('/stuff/')){
+            url.pathname = '/api' + request.nextUrl.pathname
+            return NextResponse.rewrite(url)
+          }
         }
 
-    => Pages/api/images/[...slug].js // for access images
+    => Pages/api/stuff/[...slug].js // for access images
         export const config = {
             api: { externalResolver: true }
         }
         import express from 'express';
         const handler = express();
-        const serveFiles = express.static('files');
-        handler.use('/images', serveFiles);
+        const serveFiles = express.static('public');
+        handler.use('/stuff', serveFiles);
         export default handler;
 
     => Load this url : http://localhost:3000/images/forgot_password.png
